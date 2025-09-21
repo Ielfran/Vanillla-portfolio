@@ -3,53 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>Ielfran</title>
     <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="main-header">
-        <nav class="main-nav">
-            <h1 class="logo"><a href="#">Your Name</a></h1>
+    <nav class="side-nav">
+        <div class="nav-content">
+            <h1 class="logo"><a href="#">Ielfran</a></h1>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="theme-toggle">
-                <button id="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                <button id="theme-toggle-btn" aria-label="Toggle Theme">
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
     <main>
         <section id="hero" class="hero-section">
             <div class="hero-content">
-                <p class="greeting">Hello, I'm</p>
-                <h2 class="name">Your Name Here</h2>
-                <p class="tagline">A Passionate Web Developer</p>
-                <a href="#projects" class="btn primary-btn">View My Work</a>
+                <h2 class="name">Gagan Rai/ Ielfran</h2>
+                <p class="tagline">Creative Technologist</p>
+                <a href="#projects" class="btn primary-btn">Explore My Work</a>
             </div>
-            <div class="hero-image">
-                <!-- Replace with your actual profile image -->
-                <img src="assets/images/profile.jpg" alt="Your Profile Picture">
-            </div>
-            <canvas id="particles-canvas"></canvas> <!-- For unique particle effect -->
+            <div class="hero-background"></div>
         </section>
 
         <section id="about" class="about-section">
             <div class="container">
                 <h2>About Me</h2>
-                <p>
-                    I'm a dedicated and enthusiastic web developer with a strong foundation in front-end technologies. My journey in web development began with a curiosity for how websites work, evolving into a passion for creating intuitive and engaging user experiences. I love to bring ideas to life on the web, focusing on clean code and responsive designs.
-                </p>
-                <p>
-                    When I'm not coding, you can find me exploring new design trends, learning new programming languages, or enjoying a good book. I'm always eager to learn and grow, and I thrive in collaborative environments where I can contribute to innovative solutions.
-                </p>
-                <a href="#contact" class="btn secondary-btn">Let's Connect</a>
+                <div class="about-content">
+                    <p>
+                        I'm a passionate developer with a knack for crafting seamless digital experiences. My expertise lies in blending clean code with innovative design to build websites and applications that are both functional and visually compelling.
+                    </p>
+                    <p>
+                        Outside of coding, I dive into exploring new tech, sketching minimalist designs, or losing myself in a good sci-fi novel. I thrive on challenges and am always eager to push the boundaries of what's possible on the web.
+                    </p>
+                    <a href="#contact" class="btn secondary-btn">Get in Touch</a>
+                </div>
             </div>
         </section>
 
@@ -57,30 +55,12 @@
             <div class="container">
                 <h2>My Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-item">
-                        <i class="fab fa-html5"></i>
-                        <h3>HTML5</h3>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-css3-alt"></i>
-                        <h3>CSS3</h3>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-js-square"></i>
-                        <h3>JavaScript</h3>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-react"></i>
-                        <h3>React</h3>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fab fa-node-js"></i>
-                        <h3>Node.js</h3>
-                    </div>
-                    <div class="skill-item">
-                        <i class="fas fa-database"></i>
-                        <h3>Databases</h3>
-                    </div>
+                    <div class="skill-item" data-skill="95">HTML5</div>
+                    <div class="skill-item" data-skill="90">CSS3</div>
+                    <div class="skill-item" data-skill="85">JavaScript</div>
+                    <div class="skill-item" data-skill="80">React</div>
+                    <div class="skill-item" data-skill="75">Node.js</div>
+                    <div class="skill-item" data-skill="70">Databases</div>
                 </div>
             </div>
         </section>
@@ -90,26 +70,35 @@
                 <h2>My Projects</h2>
                 <div class="projects-grid">
                     <div class="project-card">
-                        <img src="assets/images/project1.jpg" alt="Project 1">
-                        <h3>Project One Title</h3>
-                        <p>A brief description of Project One, highlighting its key features and technologies used.</p>
-                        <a href="#" class="btn tertiary-btn" target="_blank">View Project</a>
+                        <div class="project-image">
+                            <img src="assets/images/project1.jpg" alt="Project 1">
+                            <div class="project-overlay">Project One</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Project One</h3>
+                            <p>An innovative web app showcasing advanced front-end techniques and seamless user interactions.</p>
+                            <a href="#" class="btn tertiary-btn" target="_blank">View Project</a>
+                        </div>
                     </div>
                     <div class="project-card">
-                        <img src="assets/images/project2.jpg" alt="Project 2">
-                        <h3>Project Two Title</h3>
-                        <p>A brief description of Project Two, highlighting its key features and technologies used.</p>
-                        <a href="#" class="btn tertiary-btn" target="_blank">View Project</a>
+                        <div class="project-image">
+                            <img src="assets/images/project2.jpg" alt="Project 2">
+                            <div class="project-overlay">Project Two</div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Project Two</h3>
+                            <p>A dynamic platform built with modern frameworks, focusing on performance and scalability.</p>
+                            <a href="#" class="btn tertiary-btn" target="_blank">View Project</a>
+                        </div>
                     </div>
-                    <!-- Add more project cards as needed -->
                 </div>
             </div>
         </section>
 
         <section id="contact" class="contact-section">
             <div class="container">
-                <h2>Get In Touch</h2>
-                <p>Have a question or want to work together? Feel free to reach out!</p>
+                <h2>Contact Me</h2>
+                <p>Interested in collaborating or have a question? Drop me a message!</p>
                 <form class="contact-form">
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -131,7 +120,7 @@
 
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2023 Your Name. All rights reserved.</p>
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
             <div class="social-links">
                 <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" target="_blank"><i class="fab fa-github"></i></a>
