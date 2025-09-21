@@ -17,6 +17,11 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="theme-toggle">
+                <button id="theme-toggle-btn" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </nav>
     </header>
 
@@ -32,6 +37,7 @@
                 <!-- Replace with your actual profile image -->
                 <img src="assets/images/profile.jpg" alt="Your Profile Picture">
             </div>
+            <canvas id="particles-canvas"></canvas> <!-- For unique particle effect -->
         </section>
 
         <section id="about" class="about-section">
@@ -65,11 +71,11 @@
                     </div>
                     <div class="skill-item">
                         <i class="fab fa-react"></i>
-                        <h3>React (or another framework/library you know)</h3>
+                        <h3>React</h3>
                     </div>
                     <div class="skill-item">
                         <i class="fab fa-node-js"></i>
-                        <h3>Node.js (or another backend tech)</h3>
+                        <h3>Node.js</h3>
                     </div>
                     <div class="skill-item">
                         <i class="fas fa-database"></i>
@@ -133,6 +139,8 @@
             </div>
         </div>
     </footer>
+
+    <button id="back-to-top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
 
     <script src="js/script.js"></script>
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>

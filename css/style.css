@@ -6,9 +6,18 @@
     --text-dark: #333;
     --text-light: #f4f4f4;
     --bg-light: #ffffff;
-    --bg-dark: #222;
+    --bg-dark: #1a1a1a;
+    --bg-secondary: #f9f9f9;
     --border-radius: 8px;
     --transition-speed: 0.3s ease;
+}
+
+.dark-mode {
+    --text-dark: #f4f4f4;
+    --text-light: #333;
+    --bg-light: #1a1a1a;
+    --bg-dark: #ffffff;
+    --bg-secondary: #2a2a2a;
 }
 
 * {
@@ -27,6 +36,7 @@ body {
     color: var(--text-dark);
     background-color: var(--bg-light);
     overflow-x: hidden; /* Prevent horizontal scroll from animations */
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 .container {
@@ -112,11 +122,9 @@ ul {
 }
 
 .tertiary-btn:hover {
-    background-color: darken(var(--accent-color), 10%); /* This won't work in vanilla CSS, use a hex value */
     background-color: #e5a700; /* Darker amber */
     transform: translateY(-3px);
 }
-
 
 /* Header */
 .main-header {
@@ -128,6 +136,7 @@ ul {
     top: 0;
     left: 0;
     animation: slideInTop 1s forwards;
+    transition: background-color var(--transition-speed);
 }
 
 .main-nav {
@@ -186,6 +195,19 @@ ul {
     width: 100%;
 }
 
+.theme-toggle button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    color: var(--text-dark);
+    transition: color var(--transition-speed);
+}
+
+.theme-toggle button:hover {
+    color: var(--primary-color);
+}
+
 /* Hero Section */
 .hero-section {
     min-height: 100vh;
@@ -197,6 +219,8 @@ ul {
     padding-top: 80px; /* Offset for fixed header */
     text-align: center;
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-content {
@@ -207,6 +231,7 @@ ul {
     opacity: 0; /* For animation */
     transform: translateX(-50px); /* For animation */
     animation: fadeInLeft 1.2s forwards 0.5s;
+    z-index: 1;
 }
 
 .hero-content .greeting {
@@ -236,6 +261,7 @@ ul {
     opacity: 0; /* For animation */
     transform: translateX(50px); /* For animation */
     animation: fadeInRight 1.2s forwards 0.7s;
+    z-index: 1;
 }
 
 .hero-image img {
@@ -249,14 +275,25 @@ ul {
     max-height: 400px;
 }
 
+#particles-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.5;
+}
+
 /* Sections General */
 section {
     padding: 80px 0;
     position: relative;
+    transition: background-color var(--transition-speed);
 }
 
 section:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: var(--bg-secondary);
 }
 
 /* About Section */
@@ -352,6 +389,11 @@ section:nth-child(even) {
     height: 220px;
     object-fit: cover;
     border-bottom: 3px solid var(--primary-color);
+    transition: transform var(--transition-speed);
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
 }
 
 .project-card h3 {
@@ -405,7 +447,9 @@ section:nth-child(even) {
     border-radius: var(--border-radius);
     font-family: 'Poppins', sans-serif;
     font-size: 1em;
-    transition: border-color var(--transition-speed);
+    transition: border-color var(--transition-speed), background-color var(--transition-speed);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
 }
 
 .form-group input:focus,
@@ -427,6 +471,7 @@ section:nth-child(even) {
     color: var(--text-light);
     padding: 40px 0;
     text-align: center;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 .main-footer .container {
@@ -453,7 +498,29 @@ section:nth-child(even) {
     transform: translateY(-3px);
 }
 
-/* Animations (CSS-only for now, JS will add more) */
+/* Back to Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
+    z-index: 1000;
+}
+
+#back-to-top:hover {
+    transform: translateY(-5px);
+}
+
+/* Animations */
 @keyframes slideInTop {
     from {
         transform: translateY(-100%);
@@ -492,12 +559,18 @@ section:nth-child(even) {
     .main-nav {
         flex-direction: column;
     }
+
     .main-nav ul {
         margin-top: 15px;
         justify-content: center;
     }
+
     .main-nav ul li {
         margin: 0 15px;
+    }
+
+    .theme-toggle {
+        margin-top: 10px;
     }
 
     .hero-section {
@@ -563,4 +636,13 @@ section:nth-child(even) {
         padding: 10px 20px;
         font-size: 1em;
     }
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group textarea {
+    border-color: #444;
+}
+
+.dark-mode .project-card {
+    background-color: var(--bg-secondary);
 }
