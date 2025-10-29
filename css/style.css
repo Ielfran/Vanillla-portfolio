@@ -1,4 +1,3 @@
-/* General Styles */
 :root {
     --primary-color: #000000; /* Black */
     --secondary-color: #333333; /* Dark Grey */
@@ -125,6 +124,8 @@ a {
     height: 100vh;
     width: 80px;
     background-color: var(--bg-light);
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.05);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
     transition: width 0.3s ease, background-color var(--transition-speed);
     z-index: 1000;
 }
@@ -133,13 +134,47 @@ a {
     width: 220px;
 }
 
+.side-nav::after {
+    content: '◀'; /* subtle hint indicator */
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(0, 0, 0, 0.3);
+    font-size: 1.2em;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.side-nav:hover::after {
+    opacity: 0;
+}
+.side-nav img {
+    width: 50px;              /* Scaled down for better fit */
+    height: auto;
+    border-radius: 50%;       /* Optional: makes it circular */
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    object-fit: cover;
+}
+
+/* Slightly enlarge and center when sidebar expands */
+.side-nav:hover img {
+    width: 80px;              /* expands with sidebar */
+    margin-bottom: 35px;
+    transform: scale(1.05);
+}
+
+/* Adjust sidebar layout to keep spacing clean */
 .nav-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 10px;
+    padding: 30px 10px 20px;
     height: 100%;
 }
+
 
 .logo a {
     font-size: 1.5em;
@@ -147,12 +182,12 @@ a {
     color: var(--primary-color);
     margin-bottom: 40px;
     white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.2s ease 0.1s;
+    opacity: 0; /* Changed from 0.4 to 0 to make it disappear */
+    transition: opacity 0.3s ease;
 }
 
 .side-nav:hover .logo a {
-    opacity: 1;
+    opacity: 1; /* Appears on hover */
 }
 
 .side-nav ul {
@@ -160,6 +195,8 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    list-style: none; /* remove bullets */
+    padding: 0;
 }
 
 .side-nav ul li {
@@ -174,19 +211,12 @@ a {
     padding: 10px;
     color: var(--text-dark);
     font-size: 1.1em;
-    opacity: 0;
+    opacity: 0; /* hidden when collapsed */
     transition: opacity 0.2s ease, color var(--transition-speed), background-color var(--transition-speed);
 }
 
 .side-nav:hover .nav-link {
-    opacity: 1;
-}
-
-.nav-link::before {
-    content: '\f0c8';
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 400;
-    color: var(--accent-color);
+    opacity: 1; /* visible on hover */
 }
 
 .nav-link:hover {
@@ -262,9 +292,12 @@ a {
 }
 
 .hero-content .tagline {
-    font-size: 1.8em;
-    color: var(--text-dark);
-    margin: 20px 0 30px;
+ font-size: 1.5rem;
+    font-weight: 500;
+    color: #000;
+    position: relative;
+    min-height: 2rem;
+    overflow: hidden;
 }
 
 .hero-background {
@@ -273,10 +306,54 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.07));
-    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
     z-index: 0;
+    background: linear-gradient(135deg, #2b2b2b, #3c3c3c, #4a4a4a, #5a5a5a);
+    background-size: 400% 400%;
+    animation: gradientAnimation 20s ease infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 100%);
+    overflow: hidden;
 }
+
+/* Animated gradient */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Snowflake dots */
+.hero-background::before,
+.hero-background::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+    background-repeat: no-repeat;
+    background-size: 10px 10px, 15px 15px, 8px 8px, 12px 12px, 6px 6px;
+    background-position:
+        5% 10%, 20% 30%, 50% 60%, 70% 20%, 90% 50%;
+    animation: snowMove 4s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Slightly offset second layer for variation */
+.hero-background::after {
+    animation-delay: 2s;
+}
+
+/* Snow animation */
+@keyframes snowMove {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(50px, 150px) rotate(360deg); }
+}
+
 
 /* About Section */
 .about-section {
@@ -296,152 +373,49 @@ a {
     color: var(--text-dark);
 }
 
-
-
 /* Skills Section (Languages & Tools) */
 .skills-section {
-  background: #fff;
-  color: #000;
-  padding: 80px 0;
-  text-align: center;
-  border-top: 1px solid #e5e5e5;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    padding: 80px 0;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
 }
 
 .skills-section h3 {
-  font-size: 1.8rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-bottom: 40px;
-  color: #111;
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    color: var(--primary-color);
 }
 
-/* Container for icons */
 .skills-section p {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  max-width: 900px;
-  margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
-/* Icon Style — keep color */
 .skills-section img {
-  width: 50px;
-  height: 50px;
-  opacity: 0.9;
-  transition: all 0.3s ease;
+    width: 50px;
+    height: 50px;
+    opacity: 0.9;
+    transition: all 0.3s ease;
 }
 
-/* Hover effect — slight lift and glow */
 .skills-section img:hover {
-  transform: translateY(-5px) scale(1.05);
-  opacity: 1;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    transform: translateY(-5px) scale(1.05);
+    opacity: 1;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
-/* Links (no underline or color change) */
 .skills-section a {
-  text-decoration: none;
-  display: inline-block;
+    text-decoration: none;
+    display: inline-block;
 }
-
-/* Responsive Tweaks */
-@media (max-width: 768px) {
-  .skills-section {
-    padding: 60px 20px;
-  }
-
-  .skills-section h3 {
-    font-size: 1.5rem;
-  }
-
-  .skills-section img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .skills-section p {
-    gap: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .skills-section img {
-    width: 35px;
-    height: 35px;
-  }
-
-  .skills-section h3 {
-    font-size: 1.3rem;
-  }
-}
-
-
-
-
-/* Sidebar Visibility Hint */
-.side-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 80px;
-    background-color: var(--bg-light);
-    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.05); /* subtle shadow hint */
-    border-right: 1px solid rgba(0, 0, 0, 0.08); /* faint border for visibility */
-    transition: width 0.3s ease, background-color var(--transition-speed);
-    z-index: 1000;
-}
-
-.side-nav::after {
-    content: '◀'; /* subtle hint indicator */
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: rgba(0, 0, 0, 0.3);
-    font-size: 1.2em;
-    opacity: 1;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-/* Hide the hint when hovered (since nav expands) */
-.side-nav:hover::after {
-    opacity: 0;
-}
-
-/* Optional: make the logo slightly visible even when collapsed */
-.logo a {
-    font-size: 1.5em;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 40px;
-    white-space: nowrap;
-    opacity: 0.4; /* faintly visible before hover */
-    transition: opacity 0.3s ease;
-}
-
-.side-nav:hover .logo a {
-    opacity: 1;
-}
-
-.logo a {
-    font-size: 1.5em;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 40px;
-    white-space: nowrap;
-    opacity: 0; /* completely hidden when collapsed */
-    transition: opacity 0.2s ease 0.1s;
-}
-
-.side-nav:hover .logo a {
-    opacity: 1; /* visible only when hovered */
-}
-
-
 
 /* Projects Section */
 .projects-section {
@@ -528,9 +502,9 @@ a {
 .more-projects-btn {
     display: inline-block;
     font-size: 1.25rem;
-    color: #000;
+    color: var(--primary-color);
     text-decoration: none;
-    border: 2px solid #000;
+    border: 2px solid var(--primary-color);
     padding: 0.75rem 1.5rem;
     border-radius: 9999px;
     transition: all 0.3s ease;
@@ -539,103 +513,91 @@ a {
 }
 
 .more-projects-btn:hover {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--text-light);
 }
 
-
-/* Contact Section – Minimalist Black & White */
+/* Contact Section */
 .contact-section {
-  padding: 80px 20px;
-  background: #fff;
-  color: #000;
-  text-align: center;
-  border-top: 1px solid #ddd;
+    padding: 80px 20px;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    text-align: center;
+    border-top: 1px solid #ddd;
 }
 
 .contact-section h2 {
-  font-size: 2.2em;
-  margin-bottom: 10px;
-  font-weight: 600;
-  color: #000;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--primary-color);
 }
 
 .contact-section p {
-  font-size: 1em;
-  color: #333;
-  margin-bottom: 40px;
-  letter-spacing: 0.3px;
+    font-size: 1em;
+    color: var(--text-dark);
+    margin-bottom: 40px;
+    letter-spacing: 0.3px;
 }
 
 .contact-cards {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 
 .contact-card {
-  background: #fff;
-  border: 1px solid #000;
-  border-radius: 12px;
-  padding: 30px 20px;
-  width: 180px;
-  text-decoration: none;
-  color: #000;
-  transition: all 0.3s ease;
+    background: var(--bg-light);
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 30px 20px;
+    width: 180px;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: all 0.3s ease;
 }
 
 .contact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  background: #f8f8f8;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: var(--bg-secondary);
 }
 
 .contact-card img {
-  width: 50px;
-  height: 50px;
-  filter: grayscale(100%);
-  margin-bottom: 15px;
+    width: 50px;
+    height: 50px;
+    filter: grayscale(100%);
+    margin-bottom: 15px;
 }
 
 .contact-card h3 {
-  font-size: 1.1em;
-  margin-bottom: 5px;
-  font-weight: 600;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    font-weight: 600;
 }
 
 .contact-card p {
-  font-size: 0.9em;
-  color: #555;
+    font-size: 0.9em;
+    color: var(--text-dark);
 }
 
 .contact-info p {
-  margin: 6px 0;
-  font-size: 0.95em;
+    margin: 6px 0;
+    font-size: 0.95em;
 }
 
 .contact-info a {
-  color: #000;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
 }
 
 .contact-info a:hover {
-  border-color: #000;
+    border-color: var(--primary-color);
 }
-
-/* Footer */
-.main-footer {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 0.9em;
-  letter-spacing: 0.3px;
-}
-
 
 /* Footer */
 .main-footer {
@@ -669,7 +631,7 @@ a {
     transform: translateY(-3px);
 }
 
-/* Back to Top - Stylish Version */
+/* Back to Top */
 #back-to-top {
     position: fixed;
     bottom: 25px;
@@ -677,7 +639,7 @@ a {
     width: 55px;
     height: 55px;
     background: linear-gradient(135deg, #ff6b6b, #f06595);
-    color: #fff;
+    color: #000;
     border: none;
     border-radius: 50%;
     font-size: 1.5em;
@@ -686,7 +648,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
+    opacity: 1;
     transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 100;
 }
@@ -734,49 +696,9 @@ a {
 }
 
 /* Responsive Design */
-/* Responsive Design */
 @media (max-width: 768px) {
     .side-nav {
-        width: 100%;
-        height: 60px;
-        display: flex;
-        align-items: center;
-        list-style: none;
-        box-shadow: none; /* remove side shadow on mobile */
-        border-right: none; /* remove right border on mobile */
-    }
-
-    .side-nav:hover {
-        width: 100%;
-    }
-
-    .nav-content {
-        flex-direction: row;
-        justify-content: space-between;
-        width: 100%;
-        padding: 10px 20px;
-    }
-
-    .side-nav ul {
-        flex-direction: row;
-        gap: 10px;
-        list-style: none; /* ensure no bullets on mobile */
-        padding-left: 0;
-    }
-
-    .nav-link {
-        opacity: 1;
-        font-size: 0.9em;
-    }
-
-    /* Remove any ::before icons on mobile */
-    .nav-link::before {
-        content: none;
-    }
-
-    .logo a {
-        opacity: 1;
-        font-size: 1.2em;
+        display: none; /* Hide sidebar completely on mobile */
     }
 
     .hero-section {
@@ -795,11 +717,27 @@ a {
     .projects-grid {
         grid-template-columns: 1fr;
     }
+
+    .skills-section {
+        padding: 60px 20px;
+    }
+
+    .skills-section h3 {
+        font-size: 1.5rem;
+    }
+
+    .skills-section img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .skills-section p {
+        gap: 20px;
+    }
 }
 
-
 @media (max-width: 480px) {
-    .hero-ent .name {
+    .hero-content .name {
         font-size: 2.5em;
     }
 
@@ -811,4 +749,13 @@ a {
         padding: 10px 20px;
         font-size: 1em;
     }
-}  ,
+
+    .skills-section img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .skills-section h3 {
+        font-size: 1.3rem;
+    }
+}

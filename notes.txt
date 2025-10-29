@@ -1,0 +1,284 @@
+To identify the lines in the provided CSS that determine the color of the page, I’ll scan the code for properties and variables that directly affect colors (e.g., `color`, `background`, `background-color`, `border`, `border-color`, `box-shadow`, etc.) and CSS variables used for colors (e.g., `--primary-color`, `--text-dark`, etc.). Below is a list of the relevant lines, including their line numbers and a brief description of their purpose.
+
+### List of Lines Determining Color in the CSS
+
+1. **Line 3: `--primary-color: #000000;`**
+   - Defines the primary color (black) used for elements like buttons, links, and headings.
+
+2. **Line 4: `--secondary-color: #333333;`**
+   - Defines the secondary color (dark grey) used in gradients and glitch effects.
+
+3. **Line 5: `--accent-color: #999999;`**
+   - Defines the accent color (light grey) used for underlines, icons, and hover effects.
+
+4. **Line 6: `--text-dark: #1a1a1a;`**
+   - Defines the dark text color used for text in light mode.
+
+5. **Line 7: `--text-light: #ffffff;`**
+   - Defines the light text color used for text in dark mode or on dark backgrounds.
+
+6. **Line 8: `--bg-light: #ffffff;`**
+   - Defines the light background color for the page in light mode.
+
+7. **Line 9: `--bg-dark: #1a1a1a;`**
+   - Defines the dark background color used for the footer and in dark mode.
+
+8. **Line 10: `--bg-secondary: #f5f5f5;`**
+   - Defines the secondary background color (light grey) for sections like the about section.
+
+9. **Line 14: `--text-dark: #ffffff;`**
+   - In dark mode, redefines the dark text color to white.
+
+10. **Line 15: `--text-light: #1a1a1a;`**
+    - In dark mode, redefines the light text color to dark grey.
+
+11. **Line 16: `--bg-light: #1a1a1a;`**
+    - In dark mode, redefines the light background color to dark grey.
+
+12. **Line 17: `--bg-dark: #ffffff;`**
+    - In dark mode, redefines the dark background color to white.
+
+13. **Line 18: `--bg-secondary: #2a2a2a;`**
+    - In dark mode, redefines the secondary background color to a darker grey.
+
+14. **Line 29: `color: var(--text-dark);`**
+    - Sets the body text color using the `--text-dark` variable.
+
+15. **Line 30: `background-color: var(--bg-light);`**
+    - Sets the body background color using the `--bg-light` variable.
+
+16. **Line 37: `color: var(--primary-color);`**
+    - Sets the color for `h1`, `h2`, and `h3` elements using `--primary-color`.
+
+17. **Line 45: `background-color: var(--accent-color);`**
+    - Sets the background color for the underline effect under `h2` elements.
+
+18. **Line 49: `color: var(--primary-color);`**
+    - Sets the default link color using `--primary-color`.
+
+19. **Line 56: `background-color: var(--primary-color);`**
+    - Sets the background color for `.primary-btn` using `--primary-color`.
+
+20. **Line 57: `color: var(--text-light);`**
+    - Sets the text color for `.primary-btn` using `--text-light`.
+
+21. **Line 58: `box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);`**
+    - Sets a shadow with a semi-transparent black color for `.primary-btn`.
+
+22. **Line 61: `background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));`**
+    - Sets a gradient hover background for `.primary-btn` using `--primary-color` and `--secondary-color`.
+
+23. **Line 66: `color: var(--primary-color);`**
+    - Sets the text color for `.secondary-btn` using `--primary-color`.
+
+24. **Line 67: `border: 2px solid var(--primary-color);`**
+    - Sets the border color for `.secondary-btn` using `--primary-color`.
+
+25. **Line 70: `background-color: var(--primary-color);`**
+    - Sets the hover background color for `.secondary-btn` using `--primary-color`.
+
+26. **Line 71: `color: var(--text-light);`**
+    - Sets the hover text color for `.secondary-btn` using `--text-light`.
+
+27. **Line 75: `background-color: var(--accent-color);`**
+    - Sets the background color for `.tertiary-btn` using `--accent-color`.
+
+28. **Line 76: `color: var(--text-dark);`**
+    - Sets the text color for `.tertiary-btn` using `--text-dark`.
+
+29. **Line 79: `background-color: #666666;`**
+    - Sets a fixed grey hover background color for `.tertiary-btn`.
+
+30. **Line 86: `background-color: var(--bg-light);`**
+    - Sets the background color for `.side-nav` using `--bg-light`.
+
+31. **Line 99: `color: var(--primary-color);`**
+    - Sets the color for the logo link using `--primary-color`.
+
+32. **Line 117: `color: var(--text-dark);`**
+    - Sets the color for `.nav-link` using `--text-dark`.
+
+33. **Line 121: `color: var(--accent-color);`**
+    - Sets the color for the `::before` icon in `.nav-link` using `--accent-color`.
+
+34. **Line 124: `color: var(--primary-color);`**
+    - Sets the hover color for `.nav-link` using `--primary-color`.
+
+35. **Line 125: `background-color: var(--bg-secondary);`**
+    - Sets the hover background color for `.nav-link` using `--bg-secondary`.
+
+36. **Line 132: `color: var(--text-dark);`**
+    - Sets the color for the theme toggle button using `--text-dark`.
+
+37. **Line 135: `color: var(--primary-color);`**
+    - Sets the hover color for the theme toggle button using `--primary-color`.
+
+38. **Line 145: `background-color: var(--bg-light);`**
+    - Sets the background color for `.hero-section` using `--bg-light`.
+
+39. **Line 154: `color: var(--primary-color);`**
+    - Sets the color for `.hero-content .name` using `--primary-color`.
+
+40. **Line 161: `color: var(--accent-color);`**
+    - Sets the color for the glitch effect `::before` in `.hero-content .name` using `--accent-color`.
+
+41. **Line 164: `color: var(--secondary-color);`**
+    - Sets the color for the glitch effect `::after` in `.hero-content .name` using `--secondary-color`.
+
+42. **Line 168: `color: var(--text-dark);`**
+    - Sets the color for `.hero-content .tagline` using `--text-dark`.
+
+43. **Line 173: `background: linear-gradient(135deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.07));`**
+    - Sets a semi-transparent black gradient for `.hero-background`.
+
+44. **Line 180: `background-color: var(--bg-secondary);`**
+    - Sets the background color for `.about-section` using `--bg-secondary`.
+
+45. **Line 186: `color: var(--text-dark);`**
+    - Sets the text color for `.about-content p` using `--text-dark`.
+
+46. **Line 193: `background: #fff;`**
+    - Sets a fixed white background for `.skills-section`.
+
+47. **Line 194: `color: #000;`**
+    - Sets a fixed black text color for `.skills-section`.
+
+48. **Line 195: `border-top: 1px solid #e5e5e5;`**
+    - Sets a light grey border-top color for `.skills-section`.
+
+49. **Line 199: `color: #111;`**
+    - Sets a near-black color for `.skills-section h3`.
+
+50. **Line 212: `filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));`**
+    - Sets a semi-transparent black drop-shadow for `.skills-section img:hover`.
+
+51. **Line 245: `background-color: var(--bg-light);`**
+    - Sets the background color for `.side-nav` using `--bg-light`.
+
+52. **Line 248: `box-shadow: 3px 0 10px rgba(0, 0, 0, 0.05);`**
+    - Sets a semi-transparent black shadow for `.side-nav`.
+
+53. **Line 249: `border-right: 1px solid rgba(0, 0, 0, 0.08);`**
+    - Sets a semi-transparent black border-right for `.side-nav`.
+
+54. **Line 255: `color: rgba(0, 0, 0, 0.3);`**
+    - Sets a semi-transparent black color for the `.side-nav::after` hint.
+
+55. **Line 265: `color: var(--primary-color);`**
+    - Sets the color for `.logo a` using `--primary-color`.
+
+56. **Line 274: `color: var(--primary-color);`**
+    - Sets the color for `.logo a` using `--primary-color` (repeated declaration).
+
+57. **Line 285: `background-color: var(--bg-light);`**
+    - Sets the background color for `.project-card` using `--bg-light`.
+
+58. **Line 288: `box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);`**
+    - Sets a semi-transparent black shadow for `.project-card`.
+
+59. **Line 291: `box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);`**
+    - Sets a semi-transparent black shadow for `.project-card:hover`.
+
+60. **Line 301: `background: rgba(0, 0, 0, 0.15);`**
+    - Sets a semi-transparent black background for `.project-overlay`.
+
+61. **Line 304: `color: var(--text-light);`**
+    - Sets the text color for `.project-overlay` using `--text-light`.
+
+62. **Line 312: `color: var(--text-dark);`**
+    - Sets the text color for `.project-info p` using `--text-dark`.
+
+63. **Line 319: `color: #000;`**
+    - Sets a fixed black color for `.more-projects-btn`.
+
+64. **Line 321: `border: 2px solid #000;`**
+    - Sets a fixed black border for `.more-projects-btn`.
+
+65. **Line 326: `background-color: #000;`**
+    - Sets a fixed black hover background for `.more-projects-btn`.
+
+66. **Line 327: `color: #fff;`**
+    - Sets a fixed white hover text color for `.more-projects-btn`.
+
+67. **Line 334: `background: #fff;`**
+    - Sets a fixed white background for `.contact-section`.
+
+68. **Line 335: `color: #000;`**
+    - Sets a fixed black text color for `.contact-section`.
+
+69. **Line 336: `border-top: 1px solid #ddd;`**
+    - Sets a light grey border-top for `.contact-section`.
+
+70. **Line 340: `color: #000;`**
+    - Sets a fixed black color for `.contact-section h2`.
+
+71. **Line 345: `color: #333;`**
+    - Sets a dark grey color for `.contact-section p`.
+
+72. **Line 353: `background: #fff;`**
+    - Sets a fixed white background for `.contact-card`.
+
+73. **Line 354: `border: 1px solid #000;`**
+    - Sets a fixed black border for `.contact-card`.
+
+74. **Line 357: `color: #000;`**
+    - Sets a fixed black color for `.contact-card`.
+
+75. **Line 360: `background: #f8f8f8;`**
+    - Sets a light grey hover background for `.contact-card`.
+
+76. **Line 361: `box-shadow: 0 4px 10px rgba(0,0,0,0.1);`**
+    - Sets a semi-transparent black shadow for `.contact-card:hover`.
+
+77. **Line 365: `filter: grayscale(100%);`**
+    - Applies a grayscale filter to `.contact-card img`, affecting its color appearance.
+
+78. **Line 371: `color: #555;`**
+    - Sets a medium grey color for `.contact-card p`.
+
+79. **Line 377: `color: #000;`**
+    - Sets a fixed black color for `.contact-info a`.
+
+80. **Line 380: `border-color: #000;`**
+    - Sets a fixed black hover border-bottom color for `.contact-info a`.
+
+81. **Line 385: `background: #000;`**
+    - Sets a fixed black background for `.main-footer`.
+
+82. **Line 386: `color: #fff;`**
+    - Sets a fixed white text color for `.main-footer`.
+
+83. **Line 393: `background-color: var(--bg-dark);`**
+    - Sets the background color for `.main-footer` using `--bg-dark`.
+
+84. **Line 394: `color: var(--text-light);`**
+    - Sets the text color for `.main-footer` using `--text-light`.
+
+85. **Line 401: `color: var(--text-light);`**
+    - Sets the color for `.social-links a` using `--text-light`.
+
+86. **Line 404: `color: var(--accent-color);`**
+    - Sets the hover color for `.social-links a` using `--accent-color`.
+
+87. **Line 410: `background: linear-gradient(135deg, #ff6b6b, #f06595);`**
+    - Sets a pink-red gradient background for `#back-to-top`.
+
+88. **Line 411: `color: #fff;`**
+    - Sets a fixed white color for `#back-to-top`.
+
+89. **Line 413: `box-shadow: 0 6px 15px rgba(0,0,0,0.2);`**
+    - Sets a semi-transparent black shadow for `#back-to-top`.
+
+90. **Line 418: `box-shadow: 0 10px 20px rgba(0,0,0,0.3);`**
+    - Sets a semi-transparent black shadow for `#back-to-top:hover`.
+
+91. **Line 419: `background: linear-gradient(135deg, #f06595, #ff6b6b);`**
+    - Sets a reversed pink-red gradient background for `#back-to-top:hover`.
+
+### Notes
+- **Variables**: Lines 3–10 and 14–18 define CSS custom properties (`:root` and `.dark-mode`) that control colors throughout the site. These are critical for the light and dark mode functionality.
+- **Fixed Colors**: Some sections (e.g., `.skills-section`, `.contact-section`, `.main-footer`) use fixed colors (e.g., `#fff`, `#000`) instead of variables, which may not adapt to dark mode unless updated.
+- **Responsive Design**: The color-related properties are consistent across media queries, ensuring mobile compatibility.
+- **Dark Mode**: The `.dark-mode` class (lines 14–18) swaps color variables, affecting elements using `--text-dark`, `--text-light`, `--bg-light`, `--bg-dark`, and `--bg-secondary`.
+
+If you need further analysis or modifications to ensure consistent dark mode support (e.g., replacing fixed colors with variables), let me know!
